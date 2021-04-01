@@ -1,0 +1,6 @@
+export const FETCH_CARDS = 'FETCH_CARDS';
+export const FETCH_CARDS_SUCCESS = 'FETCH_CARDS_SUCCESS';
+export const FETCH_CARDS_FAILED = 'FETCH_CARDS_FAILED';
+
+export const LOAD_CARD = 'LOAD_CARD';
+export const UPLOAD_CARD = 'UPLOAD_CARD';
