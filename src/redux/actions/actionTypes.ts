@@ -4,3 +4,5 @@ export const FETCH_CARDS_FAILED = 'FETCH_CARDS_FAILED';
 
 export const LOAD_CARD = 'LOAD_CARD';
 export const UPLOAD_CARD = 'UPLOAD_CARD';
+export const DELETE_CARD = 'DELETE_CARD';
+export const FILTER_CARDS = 'FILTER_CARDS';

@@ -4,4 +4,6 @@ export {
     fetchCardsSuccess,
     loadCard,
     updateCard,
+    deleteCard,
+    filterCards,
 } from './cards';

@@ -24,3 +24,13 @@ export const updateCard = (payload: CardInterface) => ({
     type: actionTypes.UPLOAD_CARD,
     payload,
 });
+
+export const deleteCard = (payload: string) => ({
+    type: actionTypes.DELETE_CARD,
+    payload,
+});
+
+export const filterCards = (payload: string) => ({
+    type: actionTypes.FILTER_CARDS,
+    payload,
+});

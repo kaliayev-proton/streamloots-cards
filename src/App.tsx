@@ -1,25 +1,22 @@
 import React, {useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-
-// Redux
+import { useDispatch } from 'react-redux';
 import {
-  getCards
-} from './redux/selectors';
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
+
 import { fetchCards } from './redux/actions';
 
 // Components
-import List from './components/List/List';
-import Detail from './components/Detail/Detail';
-
-// Models
-import {CardInterface} from './models/cards';
+import List from './pages/List/List';
+import Detail from './pages/Detail/Detail';
 
 // Styles
 import './App.scss';
 
 const App: React.FC = () => {
-  const cards: CardInterface[] = useSelector(getCards);
-  console.log(cards);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,9 +24,18 @@ const App: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <div className="App">
-      <List items={cards} />
-      <Detail />
+    <div className="sl-app">
+      <h1>Streamloots Cards</h1>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <List />
+          </Route>
+          <Route path="/edit">
+            <Detail />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
