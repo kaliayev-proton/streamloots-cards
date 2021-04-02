@@ -25,7 +25,7 @@ const App: React.FC = () => {
 
   return (
     <div className="sl-app">
-      <h1>Streamloots Cards</h1>
+      <h1 data-test="app-h1">Streamloots Cards</h1>
       <Router>
         <Switch>
           <Route exact path="/">

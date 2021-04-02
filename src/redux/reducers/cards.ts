@@ -2,21 +2,26 @@ import * as actionTypes from '../actions/actionTypes';
 
 import {CardInterface} from '../../models/cards';
 
-interface CardsInitStateInterface {
+export interface CardsStateInterface {
   cards: CardInterface[],
   cardsFiltered: CardInterface[],
   cardLoaded: CardInterface | null,
   filterByName: string,
 }
 
-const initialState: CardsInitStateInterface = {
+interface ActionInterface {
+  type: string,
+  payload: any,
+}
+
+const initialState: CardsStateInterface = {
   cards: [],
   cardLoaded: null,
   cardsFiltered: [],
   filterByName: '',
 };
 
-const cards = (state = initialState, {type, payload}: any) => {
+const cards = (state = initialState, {type, payload}: ActionInterface): CardsStateInterface => {
   switch (type) {
     case actionTypes.FETCH_CARDS_SUCCESS:
       return {

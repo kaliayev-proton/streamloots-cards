@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {CardInterface} from '../../models/cards';
 
 // Redux
-import { getCardsFiltered, getFilter } from '../../redux/selectors';
+import { getCardsFiltered, getFilter, getCards } from '../../redux/selectors';
 import { filterCards } from '../../redux/actions';
 
 // Components
@@ -17,9 +17,9 @@ import './List.scss';
 const List: React.FC = () => {
     const dispatch = useDispatch();
     const cards: CardInterface[] = useSelector(getCardsFiltered);
+    const totalCards: CardInterface[] = useSelector(getCards);
     const filter: string = useSelector(getFilter);
-    console.log(cards);
-    useAnalytics(cards.length);
+    useAnalytics(totalCards.length);
 
     const filterByText = (event: ChangeEvent<HTMLInputElement>) => {
         const value: string = event.target.value;
