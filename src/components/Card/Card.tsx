@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+import useAnalytics, {AnalitycsInterface} from '../../hooks/analytics';
+
 import {CardInterface} from '../../models/cards';
 import {loadCard, deleteCard} from '../../redux/actions'
 
@@ -10,12 +12,15 @@ import './Card.scss';
 const Card: React.FC<CardInterface> = ({name, imageUrl, count, _id}: CardInterface) => {
     const dispatch = useDispatch();
     const history = useHistory();
+    const {event}: AnalitycsInterface = useAnalytics();
 
-    const toSelect = () => {
+    const toSelect = (ev: any) => {
         dispatch(loadCard({name, imageUrl, count, _id} as CardInterface));
+        event('click', {text: ev.target.innerText, action: 'Redirect to /edit', cardId: _id});
         history.push('/edit');
     };
-    const toDelete = () => {
+    const toDelete = (ev: any) => {
+        event('click', {text: ev.target.innerText, action: 'Delete card', cardId: _id});
         dispatch(deleteCard(_id));
     }
 

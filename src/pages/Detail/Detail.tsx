@@ -7,6 +7,8 @@ import {getDetail} from '../../redux/selectors';
 
 import {updateCard} from '../../redux/actions';
 
+import useAnalytics, { AnalitycsInterface } from '../../hooks/analytics';
+
 import './Detail.scss';
 
 const Detail: React.FC = () => {
@@ -16,6 +18,8 @@ const Detail: React.FC = () => {
     const dispatch = useDispatch();
 
     const detail: CardInterface = useSelector(getDetail);
+
+    const {event}: AnalitycsInterface = useAnalytics();
 
     // State
     const [detailFields, setDetailFields] = useState<CardInterface>({
@@ -31,25 +35,36 @@ const Detail: React.FC = () => {
         }
     }, [detail]);
 
-    const updateForm = (values: any) => {
+    const updateForm = (values: any): void => {
         setDetailFields((prevValues: CardInterface) => ({...prevValues, [values.target.name]: values.target.value}));
     }
 
-    const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+    const onSubmit = (ev: FormEvent<HTMLFormElement>): void => {
+        ev.preventDefault();
         dispatch(updateCard(detailFields));
+        const target = ev.target as HTMLElement;
+        event('click', {text: target.innerText, action: 'Submit new values', cardId: detail._id });
         history.push('/');
     };
 
+    const onReturn = (ev: any): void => {
+        event('click', {text: ev.target.innerText, action: 'Redirect to /' });
+        history.push('/');
+    }
+
     return (
-        <form onSubmit={onSubmit}>
-            <label>
+        <form onSubmit={onSubmit} className="sl-form">
+            <button className="sl-form__btn sl-form__btn--return" onClick={onReturn}>Return</button>
+            <label className="sl-form__label">
+                <span>Name</span>
                 <input type="text" name="name" value={detailFields?.name} required onChange={updateForm} />
             </label>
-            <label>
+            <label className="sl-form__label">
+                <span>Image URL</span>
                 <input type="text" name="imageUrl" value={detailFields?.imageUrl} required onChange={updateForm} />
             </label>
-            <button type="submit" >Edit</button>
+            <img className="sl-form__img" src={detailFields?.imageUrl} alt={detailFields?.imageUrl}/>
+            <button type="submit" className="sl-form__btn sl-form__btn--edit" >Edit</button>
         </form>
     );
 };

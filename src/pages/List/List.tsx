@@ -10,6 +10,8 @@ import { filterCards } from '../../redux/actions';
 // Components
 import Card from '../../components/Card/Card';
 
+import useAnalytics from '../../hooks/analytics';
+
 import './List.scss';
 
 const List: React.FC = () => {
@@ -17,6 +19,7 @@ const List: React.FC = () => {
     const cards: CardInterface[] = useSelector(getCardsFiltered);
     const filter: string = useSelector(getFilter);
     console.log(cards);
+    useAnalytics(cards.length);
 
     const filterByText = (event: ChangeEvent<HTMLInputElement>) => {
         const value: string = event.target.value;

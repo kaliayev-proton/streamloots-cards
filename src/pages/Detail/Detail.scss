@@ -1,0 +1,40 @@
+.sl-form {
+    display: grid;
+    gap: 15px;
+    justify-items: flex-end;
+
+    max-width: 400px;
+
+    margin: auto;
+
+    &__label {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    &__img {
+        width: 250px;
+        min-height: 100px;
+    }
+
+    &__btn {
+        min-width: 100px;
+
+        margin: 10px;
+        padding: 10px 20px;
+        border-radius: 3px;
+        border: 0;
+
+        color: white;
+
+        cursor: pointer;
+
+        &--edit {
+            background-color: cornflowerblue;
+        }
+
+        &--return {
+            background-color: olivedrab;
+        }
+    }
+}
