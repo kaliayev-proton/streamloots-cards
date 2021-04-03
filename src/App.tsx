@@ -24,8 +24,8 @@ const App: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <div className="sl-app">
-      <h1 data-test="app-h1">Streamloots Cards</h1>
+    <div className="sl-app" data-test="app-component">
+      <h1>Streamloots Cards</h1>
       <Router>
         <Switch>
           <Route exact path="/">

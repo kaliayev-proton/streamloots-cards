@@ -57,14 +57,14 @@ const Detail: React.FC = () => {
             <button className="sl-form__btn sl-form__btn--return" onClick={onReturn}>Return</button>
             <label className="sl-form__label">
                 <span>Name</span>
-                <input data-test="detail-input" type="text" name="name" value={detailFields?.name} required onChange={updateForm} />
+                <input data-test="detail-input-name" type="text" name="name" value={detailFields?.name} required onChange={updateForm} />
             </label>
             <label className="sl-form__label">
                 <span>Image URL</span>
-                <input data-test="detail-input" type="text" name="imageUrl" value={detailFields?.imageUrl} required onChange={updateForm} />
+                <input data-test="detail-input-image" type="text" name="imageUrl" value={detailFields?.imageUrl} required onChange={updateForm} />
             </label>
             <img className="sl-form__img" src={detailFields?.imageUrl} alt={detailFields?.imageUrl}/>
-            <button type="submit" className="sl-form__btn sl-form__btn--edit" >Edit</button>
+            <button type="submit" data-test="detail-submit-button" className="sl-form__btn sl-form__btn--edit" >Edit</button>
         </form>
     );
 };
