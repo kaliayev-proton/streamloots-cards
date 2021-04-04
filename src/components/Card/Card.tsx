@@ -24,7 +24,6 @@ const Card: React.FC<CardInterface> = ({name, imageUrl, count, _id}: CardInterfa
         dispatch(deleteCard(_id));
     }
 
-    console.log('Card rendering');
     return (
         <li className="sl-card">
             <h2 className="sl-card__title">{name} ({count.total})</h2>

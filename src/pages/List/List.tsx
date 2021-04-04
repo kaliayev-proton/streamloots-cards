@@ -28,7 +28,7 @@ const List: React.FC = () => {
 
     return (
         <div className="sl-list">
-            <input type="text" placeholder="Filter by name..." onChange={filterByText} value={filter} className="sl-list__input" />
+            <input data-test="list-input" type="text" placeholder="Filter by name..." onChange={filterByText} value={filter} className="sl-list__input" />
             <ul className="sl-list__ul">
                 {cards.map((card, i: number) => <Card {...card} key={card._id + i} />)}
             </ul>

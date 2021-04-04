@@ -1,7 +1,7 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 
 // reducers
-import cards from './reducers/cards';
+import reducers from './reducers';
 
 // sagas
 import {watchCards} from './sagas';
@@ -11,7 +11,7 @@ import createSagaMiddleware from 'redux-saga';
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-    combineReducers({cards}),
+    reducers,
     applyMiddleware(sagaMiddleware)
 );
 
